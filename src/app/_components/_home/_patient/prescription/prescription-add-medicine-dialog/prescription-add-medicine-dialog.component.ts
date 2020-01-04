@@ -5,19 +5,26 @@ import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { Medicine, MedicineType, Frequency } from 'src/app/_models';
 
 @Component({
-  selector: 'app-medicine-dialog',
-  templateUrl: './medicine-dialog.component.html',
-  styleUrls: ['./medicine-dialog.component.css']
+  selector: 'app-prescription-add-medicine-dialog',
+  templateUrl: './prescription-add-medicine-dialog.component.html',
+  styleUrls: ['./prescription-add-medicine-dialog.component.css']
 })
-export class MedicineDialogComponent implements OnInit {
+export class PrescriptionAddMedicineDialogComponent implements OnInit {
+
  medicines: Medicine[];
   medicineTypes: MedicineType[];
   frequencys: Frequency[];
    addMedcineForm: FormGroup;
    medicineChoosed:any;
-    constructor( private formBuilder: FormBuilder,private dialogRef: MatDialogRef<MedicineDialogComponent>,
+   dataItem:any={
+     medicineId:"",name:"",medicineTypeId:"",
+     medicineType:"",frequencyId:""
+     ,frequency:"",duration:"",
+     noteAr:"",noteEng:""
+   }
+    constructor( private formBuilder: FormBuilder,private dialogRef: MatDialogRef<PrescriptionAddMedicineDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, private repository: RepositoryService, private snackBar: MatSnackBar) {
-  this.medicineChoosed={frequencyId:"",}
+  this.medicineChoosed={frequencyId:"",medicineTypeId:""}
   }
 
    ngOnInit() {
@@ -32,8 +39,8 @@ export class MedicineDialogComponent implements OnInit {
       patientId:[this.data.PatientId],
       frequencyId:['',Validators.required],
       duration:['',Validators.required],
-      noteAr:[],
-      noteEng:[],
+      noteAr:[""],
+      noteEng:[""],
  
   });
    }
@@ -69,6 +76,7 @@ export class MedicineDialogComponent implements OnInit {
     this.repository.get('medicineTypes').subscribe(
       (res: any) => {
         this.medicineTypes = res;
+        console.log(res);
       },
       (err: any) => {
         this.snackBar.open(err.error, '', {
@@ -77,17 +85,19 @@ export class MedicineDialogComponent implements OnInit {
         });
       });
   }
-chooseMedicineChange()
-{
-  let choosed=this.addMedcineForm.controls.medicine.value;
-if (choosed) {
-  console.log(choosed)
+chooseMedicineChange(){
+      let choosed=this.addMedcineForm.controls.medicine.value;
+      if (choosed) {
+         
+          this.dataItem.medicineId=choosed.id;
+          this.dataItem.name=choosed.name;
+          this.dataItem.medicineTypeId=choosed.medicineTypeId;
+          this.dataItem.medicineType=choosed.medicineType;
+          this.dataItem.frequency=choosed.frequency;
+          this.dataItem.frequencyId=choosed.frequencyId;
+          this.dataItem.duration=choosed.duration;
 
-  this.addMedcineForm.controls.medicineId.setValue(choosed.id);
-this.addMedcineForm.controls.frequencyId.setValue(choosed.frequencyId);
-this.addMedcineForm.controls.medicineTypeId.setValue(choosed.medicineTypeId);
-
-this.addMedcineForm.controls.duration.setValue(choosed.duration);
+   
 }
 
 }
@@ -99,6 +109,10 @@ this.addMedcineForm.controls.duration.setValue(choosed.duration);
   onCancelClick(event): void {
     event.preventDefault();
     this.dialogRef.close();
+  }
+  onSave(){
+    this.dialogRef.close(this.dataItem);
+
   }
 
 

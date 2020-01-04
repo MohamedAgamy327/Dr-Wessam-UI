@@ -1,0 +1,54 @@
+
+<h3 mat-dialog-title>Add instruction</h3>
+<hr>
+<form autocomplete="off" class="mat-dialog-content" [formGroup]="addInstructionForm">
+
+
+<div fxLayout>
+    <div fxFlex="100%">
+   
+        <mat-form-field>
+          <mat-label>Arbic Name</mat-label>
+          <mat-select formControlName="instruction"   
+          [(ngModel)]="dataItem">
+            <mat-option *ngFor="let instruction of instructions" [value]="instruction">
+              {{instruction.arabicName}}
+            </mat-option>
+          </mat-select>
+       
+          <mat-error *ngIf="hasError('instruction', 'required')"> Arabic name Is Required</mat-error>
+
+        </mat-form-field>
+       
+      
+    </div>
+    
+
+</div>
+
+<div fxLayout>
+    <div fxFlex="100%">
+        <mat-form-field>
+          <mat-label>English Name</mat-label>
+
+            <mat-select formControlName="instruction"   
+            [(ngModel)]="dataItem">
+              <mat-option *ngFor="let instruction of instructions" [value]="instruction">
+                {{instruction.englishName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-error *ngIf="hasError('instruction', 'required')"> English name  Is Required</mat-error>
+    </div>
+
+</div>
+
+<div mat-dialog-actions class="action-buttons " >
+   
+      <button mat-flat-button color="primary" [disabled]="addInstructionForm.invalid" style="width: 104px; margin-right: 8px" (click)="onSave()"
+      type="submit">Add</button>
+    <button mat-flat-button color="warn" style="width: 104px" (click)="onCancelClick($event)">Cancel</button>
+   
+  </div>
+</form>

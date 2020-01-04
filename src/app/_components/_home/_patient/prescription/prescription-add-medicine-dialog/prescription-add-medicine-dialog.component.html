@@ -1,46 +1,58 @@
 
 <h3 mat-dialog-title>Add a medication</h3>
-
+<hr>
 <form autocomplete="off" class="mat-dialog-content" [formGroup]="addMedcineForm">
 
 
 <div fxLayout>
     <div fxFlex="45%">
-    
-      <mat-select formControlName="medicine" placeholder="Name" (ngModelChange)="chooseMedicineChange()" 
+      <mat-label>Name</mat-label>
+      <mat-form-field>
+      <mat-select formControlName="medicine" (ngModelChange)="chooseMedicineChange()" 
        [(ngModel)]="medicineChoosed" >
         <mat-option *ngFor="let medicine of medicines" [value]="medicine">
           {{medicine.name}}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="hasError('medicine', 'required')"> Name  Is Required</mat-error>
-
+    </mat-form-field>
     </div>
 
     <div fxFlex="45%" fxFlexOffset="3%">
-        <mat-form-field>
-        <input matInput type="text" [disabled]="true" placeholder="Type" formControlName="medicineTypeId"   >
-    
-      </mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-form-field>
+      
+      <mat-select formControlName="medicineTypeId"   disabled
+      [(ngModel)]="dataItem.medicineTypeId">
+        <mat-option *ngFor="let type of medicineTypes" [value]="type.id">
+          {{type.name}}
+        </mat-option>
+      </mat-select>
+   
       <mat-error *ngIf="hasError('medicineTypeId', 'required')"> Type  Is Required</mat-error>
-
+    </mat-form-field>
     </div>
 </div>
+<p></p>
 <div fxLayout>
     <div fxFlex="45%">
+      <mat-label>Frequency</mat-label>
+      <mat-form-field>
 
-      <mat-select formControlName="frequencyId" placeholder="Frequency"  [(ngModel)]="medicineChoosed.frequencyId">
+      <mat-select formControlName="frequencyId"   [(ngModel)]="dataItem.frequencyId">
        <mat-option *ngFor="let frequency of frequencys" [value]="frequency.id">
          {{frequency.arabicName}}/ {{frequency.englishName}}
        </mat-option>
      </mat-select>
           <mat-error *ngIf="hasError('frequencyId', 'required')"> Frequency  Is Required</mat-error>
-
+        </mat-form-field>
     </div>
 
     <div fxFlex="45%" fxFlexOffset="3%">
+      <mat-label>Duration</mat-label>
+
         <mat-form-field>
-        <input matInput type="text" placeholder="Duration" formControlName="duration"  >
+        <input matInput type="text"  formControlName="duration" [(ngModel)]="dataItem.duration"  >
     
       </mat-form-field>
       
@@ -50,8 +62,10 @@
 
 <div fxLayout>
     <div fxFlex="94%">
+      <mat-label>Note(Arabic)</mat-label>
+
         <mat-form-field>
-            <input matInput type="text" placeholder="Note(Arabic)" formControlName="noteAr" >
+            <input matInput type="text"  formControlName="noteAr"[(ngModel)]="dataItem.noteAr"  >
         
           </mat-form-field>
     </div>
@@ -60,8 +74,10 @@
 </div>
 <div fxLayout>
     <div fxFlex="94%">
+      <mat-label>Note(English)</mat-label>
+
         <mat-form-field>
-            <input matInput type="text" placeholder="Note(English)" formControlName="noteEng" >
+            <input matInput type="text"  formControlName="noteEng"  [(ngModel)]="dataItem.noteEng" >
         
           </mat-form-field>
     </div>
@@ -71,7 +87,7 @@
 
 <div mat-dialog-actions class="action-buttons">
     <button mat-flat-button color="primary" [disabled]="addMedcineForm.invalid" style="width: 104px; margin-right: 8px" (click)="onSave()"
-      type="submit">Save</button>
+      type="submit">Add</button>
     <button mat-flat-button color="warn" style="width: 104px" (click)="onCancelClick($event)">Cancel</button>
   </div>
 </form>

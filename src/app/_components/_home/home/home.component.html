@@ -1,9 +1,9 @@
 
-<div style="width: 100%;" [style.background-color]=" leftMenu?'rgba(0,0,0,0.1)':''  ">
+<div style="width: 100%;">
     <!-- Left sideNav -->
 <div  [hidden]="!leftMenu"    [class]="leftMenu? 'app-sidenavshow':'app-sidenav'">
 
-  <mat-toolbar class="toolbar">
+  <mat-toolbar class="toolbar_menu">
     <span class="toolbar-filler">Menu</span>
     <button mat-icon-button (click)="leftMenu=!leftMenu" class="mat-icon-button sidenav-toggle-button"
       [hidden]="!leftMenu">

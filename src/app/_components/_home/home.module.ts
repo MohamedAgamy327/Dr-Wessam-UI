@@ -20,7 +20,9 @@ import {
 } from '.';
 import { OnlyNumber } from 'src/app/_helpers';
 import { PrescriptionComponent } from './_patient/prescription/prescription.component';
-import { MedicineDialogComponent } from './_patient/prescription/medicine-dialog/medicine-dialog.component';
+
+import { PrescriptionAddMedicineDialogComponent } from './_patient/prescription/prescription-add-medicine-dialog/prescription-add-medicine-dialog.component';
+import { PrescriptionAddInstructionDialogComponent } from './_patient/prescription/prescription-add-instruction-dialog/prescription-add-instruction-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { MedicineDialogComponent } from './_patient/prescription/medicine-dialog
     InstructionDeleteDialogComponent,
     PatientsComponent, PatientAddDialogComponent, PatientShowDialogComponent,
     PatientEditDialogComponent, PatientDeleteDialogComponent,
-    MedicinesComponent, MedicineAddDialogComponent, MedicineEditDialogComponent, MedicineDeleteDialogComponent, PrescriptionComponent, MedicineDialogComponent
+    MedicinesComponent, MedicineAddDialogComponent, MedicineEditDialogComponent, MedicineDeleteDialogComponent, PrescriptionComponent, PrescriptionAddMedicineDialogComponent, PrescriptionAddInstructionDialogComponent
   ],
   entryComponents: [
     KnowingAddDialogComponent, KnowingDeleteDialogComponent, KnowingEditDialogComponent,
@@ -47,8 +49,8 @@ import { MedicineDialogComponent } from './_patient/prescription/medicine-dialog
     InstructionAddDialogComponent, InstructionEditDialogComponent, InstructionDeleteDialogComponent,
     PatientAddDialogComponent, PatientShowDialogComponent,
     PatientEditDialogComponent, PatientDeleteDialogComponent,
-    MedicineAddDialogComponent, MedicineEditDialogComponent, MedicineDeleteDialogComponent,
-    MedicineDialogComponent
+    MedicineAddDialogComponent, MedicineEditDialogComponent, MedicineDeleteDialogComponent
+    ,PrescriptionAddMedicineDialogComponent,PrescriptionAddInstructionDialogComponent
   ],
   imports: [
     CommonModule,

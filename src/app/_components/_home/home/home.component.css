@@ -7,7 +7,11 @@
 }
 
 .toolbar{
-  background-color: #437de6;;
+  background-color: #4b89ff;;
+  color: #ffffff ;
+}
+.toolbar_menu{
+  background-color: #2163da;;
   color: #ffffff ;
 }
 
@@ -38,7 +42,7 @@ display:none;
   z-index: 9999;
   width: 15%;
 height: 100vh;
-background-color:#cfddec;
+background-color:#ffffff;
 
 }
 
@@ -66,7 +70,7 @@ background-color:#cfddec;
     z-index: 9999;
     width: 15%;
   height: 100vh;
-  background-color:#cfddec;
+ 
   
   }
 }

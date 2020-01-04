@@ -1,15 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Poppins;
+  src: url(./assets/font/Poppins-Regular.ttf);
+}
 
+* {
+  font-family: 'Poppins';
+}
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 body {
-background-color:#eeeeee;
+background-color:#ffffff;
 }
 
 .green-snackbar {
@@ -78,4 +84,14 @@ svg.ng-star-inserted{
     display: block;
     width: fit-content;
   }
+}
+.mat-form-field {
+  display: block !important; 
+}
+
+
+
+.save-btn{
+  width: 104px; 
+  margin-right: 8px;
 }

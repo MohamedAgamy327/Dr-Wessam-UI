@@ -19,6 +19,7 @@ export class InstructionsComponent implements OnInit {
   displayedColumns: string[] = ['englishName', 'arabicName', 'edit', 'delete'];
   instructions: Instruction[];
   dataSource = new MatTableDataSource<Instruction>();
+  
 
   constructor(private repository: RepositoryService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
