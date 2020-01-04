@@ -1,0 +1,71 @@
+<div class="container">
+  <h3 mat-dialog-title>Update Medicine</h3>
+
+  <form autocomplete="off" class="mat-dialog-content" [formGroup]="editForm">
+
+    <div>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Name" formControlName="name">
+        <mat-error *ngIf="errorHandling('name', 'required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label> Type</mat-label>
+        <mat-select formControlName="medicineTypeId">
+          <mat-option *ngFor="let medicineType of data.medicineTypes" [value]="medicineType.id">
+            {{medicineType.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="errorHandling('medicineTypeId', 'required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Frequency</mat-label>
+        <mat-select formControlName="frequencyId">
+          <mat-option *ngFor="let frequency of data.frequencys" [value]="frequency.id">
+            {{frequency.englishName}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="errorHandling('frequencyId', 'required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Duration" formControlName="duration">
+        <mat-error *ngIf="errorHandling('duration', 'required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+
+    <div>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Notes" formControlName="notes">
+        <mat-error *ngIf="errorHandling('notes', 'required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" type="submit" (click)="update()"
+        [disabled]="!editForm.valid">Update</button>
+      <button mat-raised-button color="warn" (click)="cancel()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

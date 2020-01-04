@@ -1,0 +1,21 @@
+<div class="container">
+  <h3 mat-dialog-title>Delete Medicine</h3>
+
+  <div mat-dialog-content>
+    Name: {{data.name }}
+    <p></p>
+    Type: {{data.medicineType }}
+    <p></p>
+    Frequency: {{data.frequency }}
+    <p></p>
+    Duration: {{data.duration }}
+    <p></p>
+    Notes: {{data.notes }}
+    <p></p>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="confirmDelete()">Confirm Delete</button>
+    <button mat-raised-button color="warn" (click)="cancel()" tabindex="-1">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+
+<h3 mat-dialog-title>Add a medication</h3>
+
+<form autocomplete="off" class="mat-dialog-content" [formGroup]="addMedcineForm">
+
+
+<div fxLayout>
+    <div fxFlex="45%">
+    
+      <mat-select formControlName="medicine" placeholder="Name" (ngModelChange)="chooseMedicineChange()" 
+       [(ngModel)]="medicineChoosed" >
+        <mat-option *ngFor="let medicine of medicines" [value]="medicine">
+          {{medicine.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="hasError('medicine', 'required')"> Name  Is Required</mat-error>
+
+    </div>
+
+    <div fxFlex="45%" fxFlexOffset="3%">
+        <mat-form-field>
+        <input matInput type="text" [disabled]="true" placeholder="Type" formControlName="medicineTypeId"   >
+    
+      </mat-form-field>
+      <mat-error *ngIf="hasError('medicineTypeId', 'required')"> Type  Is Required</mat-error>
+
+    </div>
+</div>
+<div fxLayout>
+    <div fxFlex="45%">
+
+      <mat-select formControlName="frequencyId" placeholder="Frequency"  [(ngModel)]="medicineChoosed.frequencyId">
+       <mat-option *ngFor="let frequency of frequencys" [value]="frequency.id">
+         {{frequency.arabicName}}/ {{frequency.englishName}}
+       </mat-option>
+     </mat-select>
+          <mat-error *ngIf="hasError('frequencyId', 'required')"> Frequency  Is Required</mat-error>
+
+    </div>
+
+    <div fxFlex="45%" fxFlexOffset="3%">
+        <mat-form-field>
+        <input matInput type="text" placeholder="Duration" formControlName="duration"  >
+    
+      </mat-form-field>
+      
+      <mat-error *ngIf="hasError('duration', 'required')"> Duration  Is Required</mat-error>
+    </div>
+</div>
+
+<div fxLayout>
+    <div fxFlex="94%">
+        <mat-form-field>
+            <input matInput type="text" placeholder="Note(Arabic)" formControlName="noteAr" >
+        
+          </mat-form-field>
+    </div>
+
+ 
+</div>
+<div fxLayout>
+    <div fxFlex="94%">
+        <mat-form-field>
+            <input matInput type="text" placeholder="Note(English)" formControlName="noteEng" >
+        
+          </mat-form-field>
+    </div>
+
+ 
+</div>
+
+<div mat-dialog-actions class="action-buttons">
+    <button mat-flat-button color="primary" [disabled]="addMedcineForm.invalid" style="width: 104px; margin-right: 8px" (click)="onSave()"
+      type="submit">Save</button>
+    <button mat-flat-button color="warn" style="width: 104px" (click)="onCancelClick($event)">Cancel</button>
+  </div>
+</form>

@@ -1,0 +1,87 @@
+
+<div style="width: 100%;" [style.background-color]=" leftMenu?'rgba(0,0,0,0.1)':''  ">
+    <!-- Left sideNav -->
+<div  [hidden]="!leftMenu"    [class]="leftMenu? 'app-sidenavshow':'app-sidenav'">
+
+  <mat-toolbar class="toolbar">
+    <span class="toolbar-filler">Menu</span>
+    <button mat-icon-button (click)="leftMenu=!leftMenu" class="mat-icon-button sidenav-toggle-button"
+      [hidden]="!leftMenu">
+      <mat-icon aria-label="Menu" class="material-ions">close</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-nav-list>
+
+    <a mat-list-item class="sidenav-link" [routerLink]="['/home/patients']" routerLinkActive="active-list-item"
+    (click)="leftMenu=!leftMenu">
+      <span class="title" mat-line> Patient</span>
+    </a>
+
+    <a mat-list-item class="sidenav-link" [routerLink]="['/home/medicines']" routerLinkActive="active-list-item"
+    (click)="leftMenu=!leftMenu">
+    <span class="title" mat-line> Medicines</span>
+  </a>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Settings
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a mat-list-item class="sidenav-link" [routerLink]="['/home/medicinetypes']"
+          routerLinkActive="active-list-item"  (click)="leftMenu=!leftMenu">
+          <span class="title" mat-line> Medicine Types</span>
+        </a>
+
+        <a mat-list-item class="sidenav-link" [routerLink]="['/home/frequencys']" routerLinkActive="active-list-item"
+        (click)="leftMenu=!leftMenu">
+          <span class="title" mat-line> Frequency</span>
+        </a>
+
+        <a mat-list-item class="sidenav-link" [routerLink]="['/home/knowings']" routerLinkActive="active-list-item"
+        (click)="leftMenu=!leftMenu">
+          <span class="title" mat-line> Know Through</span>
+        </a>
+
+        <a mat-list-item class="sidenav-link" [routerLink]="['/home/occupations']" routerLinkActive="active-list-item"
+        (click)="leftMenu=!leftMenu">
+          <span class="title" mat-line> Occupation</span>
+        </a>
+
+        <a mat-list-item class="sidenav-link" [routerLink]="['/home/instructions']"
+          routerLinkActive="active-list-item" (click)="leftMenu=!leftMenu">
+          <span class="title" mat-line> Instruction</span>
+        </a>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </mat-nav-list>
+
+</div>
+<!-- Rightcontent -->
+
+<div   [class]="leftMenu? 'app-contentshow':'app-content'" class="app-content">
+  
+  <mat-toolbar  class="toolbar">
+    <button mat-icon-button (click)="leftMenu=!leftMenu" class="mat-icon-button sidenav-toggle-button"
+      [hidden]="leftMenu">
+      <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
+    </button>
+    <h1 class="component-title">
+      <a class="title-link">Dr Wessam M. Abuelghar</a>
+    </h1>
+    <span class="toolbar-filler"></span>
+    <button id="button-logout" mat-button (click)="editProfile()"> Profile <i
+        class="material-icons">account_circle</i></button>
+    <button id="button-logout" mat-button (click)="logout()">Log Out <i class="material-icons">logout</i></button>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+</div>
+
+
+
+</div>

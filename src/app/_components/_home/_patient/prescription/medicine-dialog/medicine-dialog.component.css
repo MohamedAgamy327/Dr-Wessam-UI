@@ -1,0 +1,13 @@
+.mat-form-field {
+    display: block !important; 
+}
+
+.action-buttons{
+    text-align: center;
+    display: block;
+}
+
+.save-btn{
+    width: 104px; 
+    margin-right: 8px;
+}
