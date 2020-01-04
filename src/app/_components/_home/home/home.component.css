@@ -25,7 +25,7 @@ display: block;
 position: relative;
 }
 .app-contentshow{
-  width: 85% ;
+  width: 84% ;
   display: block;
   position: relative;
   opacity: 0.6;
@@ -60,7 +60,6 @@ background-color:#ffffff;
     margin-left: 15%;
   }
   .app-sidenav{
-  
   display:none;
   }
   
@@ -69,9 +68,9 @@ background-color:#ffffff;
     display:inline-block;
     z-index: 9999;
     width: 15%;
-  height: 100vh;
- 
-  
+     height: 100vh;
+     border-right: solid 1px #b2b1b5;
+
   }
 }
 @media screen and (max-width: 600px){
