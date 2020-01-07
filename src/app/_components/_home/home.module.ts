@@ -1,3 +1,7 @@
+import { PregnancySequenceComponent } from './_patient/patient-profile/pregnancy-sequence/pregnancy-sequence.component';
+import { InfertilitySheetComponent } from './_patient/patient-profile/infertility-sheet/infertility-sheet.component';
+import { ViewAllPrescriptionsComponent } from './_patient/patient-profile/view-all-prescriptions/view-all-prescriptions.component';
+import { AttachedFilesComponent } from './_patient/patient-profile/attached-files/attached-files.component';
 import { AngularMaterialModule } from 'src/app/shared/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,6 +27,7 @@ import { PrescriptionComponent } from './_patient/prescription/prescription.comp
 
 import { PrescriptionAddMedicineDialogComponent } from './_patient/prescription/prescription-add-medicine-dialog/prescription-add-medicine-dialog.component';
 import { PrescriptionAddInstructionDialogComponent } from './_patient/prescription/prescription-add-instruction-dialog/prescription-add-instruction-dialog.component';
+import { PatientProfileComponent } from './_patient/patient-profile/patient-profile.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,10 @@ import { PrescriptionAddInstructionDialogComponent } from './_patient/prescripti
     InstructionDeleteDialogComponent,
     PatientsComponent, PatientAddDialogComponent, PatientShowDialogComponent,
     PatientEditDialogComponent, PatientDeleteDialogComponent,
-    MedicinesComponent, MedicineAddDialogComponent, MedicineEditDialogComponent, MedicineDeleteDialogComponent, PrescriptionComponent, PrescriptionAddMedicineDialogComponent, PrescriptionAddInstructionDialogComponent
+    MedicinesComponent, MedicineAddDialogComponent, MedicineEditDialogComponent, MedicineDeleteDialogComponent,
+     PrescriptionComponent, PrescriptionAddMedicineDialogComponent, PrescriptionAddInstructionDialogComponent,
+      ViewAllPrescriptionsComponent, PatientProfileComponent, InfertilitySheetComponent, PregnancySequenceComponent,
+       AttachedFilesComponent
   ],
   entryComponents: [
     KnowingAddDialogComponent, KnowingDeleteDialogComponent, KnowingEditDialogComponent,

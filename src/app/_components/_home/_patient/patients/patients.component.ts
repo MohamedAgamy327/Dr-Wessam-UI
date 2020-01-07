@@ -71,8 +71,8 @@ export class PatientsComponent implements OnInit {
       });
   }
 
-  goToAddPrescription(patient){
-this.router.navigate(['/home/prescription',patient.id]);
+  goToPatientProfile(patient){
+this.router.navigate(['/home/patientprofile',patient.id]);
   }
 
   applyFilter(filterValue: string) {

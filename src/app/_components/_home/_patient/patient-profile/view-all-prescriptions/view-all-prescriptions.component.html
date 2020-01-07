@@ -1,0 +1,58 @@
+<h2 >Patient history</h2>
+<div style="overflow-y: hidden;">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="dateofvisit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> DateOfVisit </th>
+      <td mat-cell *matCellDef="let element"> {{element.visitDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nextvisit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Next Visit </th>
+      <td mat-cell *matCellDef="let element"> {{element.nextVisitDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="visittype">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> VisitType </th>
+      <td mat-cell *matCellDef="let element"> {{element.visitType}} </td>
+    </ng-container>
+
+
+
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+
+          <span mat-icon-button >
+            <mat-icon [style.color]="'gray'" >
+              edit_circle
+            </mat-icon>
+          </span>
+          <span mat-icon-button >
+            <mat-icon color="warn" [style.color]="'#bd0000'">
+              delete
+            </mat-icon>
+          </span>
+          <span mat-icon-button>
+            <mat-icon  [style.background-color]="black">
+              <mat-icon aria-label="Show">remove_red_eye</mat-icon>
+            </mat-icon>
+          </span>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  <div fxLayout fxLayoutAlign="center">
+
+
+    <button class="add-input" mat-fab (click)="goToPrescriptionPage()" color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

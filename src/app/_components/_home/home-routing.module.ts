@@ -1,3 +1,9 @@
+import { PatientProfileComponent } from './_patient/patient-profile/patient-profile.component';
+import { PrescriptionComponent } from './_patient/prescription/prescription.component';
+import { PregnancySequenceComponent } from './_patient/patient-profile/pregnancy-sequence/pregnancy-sequence.component';
+import { InfertilitySheetComponent } from './_patient/patient-profile/infertility-sheet/infertility-sheet.component';
+import { ViewAllPrescriptionsComponent } from './_patient/patient-profile/view-all-prescriptions/view-all-prescriptions.component';
+import { AttachedFilesComponent } from './_patient/patient-profile/attached-files/attached-files.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {
@@ -5,7 +11,6 @@ import {
   MedicineTypesComponent, OccupationsComponent, FrequencysComponent,
   InstructionsComponent, PatientsComponent, MedicinesComponent
 } from '.';
-import { PrescriptionComponent } from './_patient/prescription/prescription.component';
 
 const routes: Routes = [
   {
@@ -34,9 +39,18 @@ const routes: Routes = [
       {
         path: 'patients', component: PatientsComponent
       },
-       {
-        path: 'prescription/:id', component: PrescriptionComponent
+        { path: 'addprescription/:id', component: PrescriptionComponent},
+
+        { path: 'patientprofile/:id', component: PatientProfileComponent,
+            children:[
+           { path: '', redirectTo: 'prescriptions', pathMatch: 'full' },
+           { path: 'prescriptions', component:ViewAllPrescriptionsComponent },
+           { path: 'infertilitysheet', component: InfertilitySheetComponent},
+           { path: 'pregnancysequence', component: PregnancySequenceComponent},
+           { path: 'attachfiles', component: AttachedFilesComponent},
+        ]
       },
+
       {
         path: '', redirectTo: '', pathMatch: 'full'
       }

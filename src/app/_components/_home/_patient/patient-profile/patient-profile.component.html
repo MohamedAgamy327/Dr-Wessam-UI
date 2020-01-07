@@ -1,0 +1,105 @@
+<!-- PatienInfo Section -->
+
+<h2 fxLayoutAlign="center">Patient Profile</h2>
+
+
+<div class="container" *ngIf="patientModel"  style="width: 30%; ">
+  <h4 fxLayoutAlign="center">Patient Information</h4>
+
+  <mat-accordion>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        <h4>  Personal data</h4>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <b>Code:</b> {{patientModel.code }}       <p></p>
+      <b>Name:</b> {{patientModel.name }}      <p></p>
+      <b>  Marital Status:</b> {{patientModel.maritalStatus }}      <p></p>
+      <b> Phone 1:</b> {{patientModel.phone1 }}      <p></p>
+      <b> Phone 2:</b> {{patientModel.phone2 }}      <p></p>
+      <b> Occupation:</b> {{patientModel.occupation }}      <p></p>
+      <b> Birthday :</b> {{patientModel.birthday |  date: 'dd/MM/yyyy' }}     <p></p>
+      <b> Knowing :</b> {{patientModel.knowing }}      <p></p>
+      <b> Residence :</b> {{patientModel.residence }}      <p></p>
+
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         <h4> Husband Data</h4>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+       <b>Name:        </b>{{patientModel.husbandName }}<p></p>
+       <b>Occupation : </b>{{patientModel.husbandOccupation }}<p></p>
+       <b>Birthday :   </b>{{patientModel.husbandBirthday |  date: 'dd/MM/yyyy'}}<p></p>
+       <b>Phone :      </b>{{patientModel.husbandPhone }} <p></p>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+      <h4>    General Data</h4>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+     <b>Blood Group:</b> {{patientModel.bloodGroup }} <p></p>
+     <b>BMI:        </b> {{patientModel.bmi }}<p></p>
+     <b>Children:   </b> {{patientModel.children }}<p></p>
+     <b>Weight:     </b> {{patientModel.weight }}   <p></p>
+     <b>Smoking:    </b>     {{patientModel.smoking }}      <p></p>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</div>
+<hr>
+
+<!-- Patients info case  -->
+<div class="container" >
+  <mat-tab-group animationDuration="1000ms"  >
+    <mat-tab >
+      <ng-template mat-tab-label class="tab" >
+        Prescriptions
+      </ng-template>
+      <h1 style="text-align: center;" >Prescriptions</h1>
+<app-view-all-prescriptions [patientId]="patientId"></app-view-all-prescriptions>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Infertility sheet
+      </ng-template>
+      <h1 style="text-align: center;">Infertility sheet</h1>
+
+
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Pregnancy sequence
+      </ng-template>
+      <h1 style="text-align: center;"> Pregnancy sequence</h1>
+
+
+    </mat-tab>
+
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Attach files
+      </ng-template>
+      <h1 style="text-align: center;">Attach files</h1>
+
+
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+
+
+
