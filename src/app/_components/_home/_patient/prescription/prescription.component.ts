@@ -31,13 +31,13 @@ prescriptionInstructions:any[];
       diagonsis:"",
       visitDate:"",
       nextVisitDate:"",
-      visitType:"",
+      visitType:0,
       patientId:"",
       prescriptionMedicines:[],
       prescriptionInstructions:[],
     };
 
-visitTypes:string[]=[{id:1,name,"medicalExamination"}, {id:2,name,"medicalConsultation"} ,{id:2,name,"folllowup"}];
+visitTypes:any[]=[{value:0,name:"medicalExamination"}, {value:1,name:"medicalConsultation"} ,{value:2,name:"folllowup"}];
   dataSource = new MatTableDataSource<any>();
   dataSourceInstruction = new MatTableDataSource<any>();
   constructor( private route:ActivatedRoute,private repository: RepositoryService,private formBuilder: FormBuilder,

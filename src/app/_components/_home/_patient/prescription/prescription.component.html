@@ -87,7 +87,7 @@
         <mat-label>Visit Type </mat-label>
 
       <mat-select   formControlName="visitType"   [(ngModel)]="dataItem.visitType">
-        <mat-option *ngFor="let type of visitTypes" [value]="type.id">
+        <mat-option *ngFor="let type of visitTypes" [value]="type.value">
           {{type.name}}
         </mat-option>
       </mat-select>
