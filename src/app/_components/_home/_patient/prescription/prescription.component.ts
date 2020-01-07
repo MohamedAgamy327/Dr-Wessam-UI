@@ -37,7 +37,7 @@ prescriptionInstructions:any[];
       prescriptionInstructions:[],
     };
 
-visitTypes:string[]=["medicalExamination","medicalConsultation","followUp"];
+visitTypes:string[]=[{id:1,name,"medicalExamination"}, {id:2,name,"medicalConsultation"} ,{id:2,name,"folllowup"}];
   dataSource = new MatTableDataSource<any>();
   dataSourceInstruction = new MatTableDataSource<any>();
   constructor( private route:ActivatedRoute,private repository: RepositoryService,private formBuilder: FormBuilder,
