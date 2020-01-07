@@ -36,16 +36,17 @@ prescriptionInstructions:any[];
       prescriptionMedicines:[],
       prescriptionInstructions:[],
     };
-visitTypes:string[]=["كشف","استشاره"];
+
+visitTypes:string[]=["medicalExamination","medicalConsultation","followUp"];
   dataSource = new MatTableDataSource<any>();
   dataSourceInstruction = new MatTableDataSource<any>();
   constructor( private route:ActivatedRoute,private repository: RepositoryService,private formBuilder: FormBuilder,
-  private snackBar: MatSnackBar, private dialog: MatDialog) 
+  private snackBar: MatSnackBar, private dialog: MatDialog)
   {
     this.prescriptionMedicines=[];
     this.prescriptionInstructions=[];
-    
-   
+
+
    }
 
 
@@ -60,7 +61,7 @@ visitTypes:string[]=["كشف","استشاره"];
    let patientId= parseInt(this.route.snapshot.paramMap.get('id'));
    if (patientId!==undefined) {
      this.dataItem.patientId=patientId;
-     this.getPatientById(patientId); 
+     this.getPatientById(patientId);
    }
       this.getFrequencys();
     this.getMedicines();
@@ -81,7 +82,7 @@ visitTypes:string[]=["كشف","استشاره"];
 
 
 
-      
+
   getPatientById(Id:number) {
     this.repository.getById('patients',Id).subscribe(
       (res: any) => {
@@ -99,7 +100,7 @@ visitTypes:string[]=["كشف","استشاره"];
     this.repository.get('medicines').subscribe(
       (res: any) => {
         this.medicines = res;
-      
+
       },
       (err: any) => {
         this.snackBar.open(err.error, '', {
@@ -152,16 +153,16 @@ addInstruction(){
       if (result) {
       this.prescriptionInstructions.push(result);
       console.log(this.prescriptionInstructions);
- 
+
       this.refeshInstructionTable();
 
-      
+
       }
     });
 }
 
 onSave(){
- 
+
   this.dataItem.prescriptionMedicines=this.prescriptionMedicines;
   this.dataItem.prescriptionInstructions=this.prescriptionInstructions;
   console.log(this.dataItem);
@@ -172,7 +173,7 @@ onSave(){
             panelClass: ['green-snackbar'],
             horizontalPosition: "right"
         });
-      
+
       },
       (err: any) => {
         this.snackBar.open(err.error, '', {
@@ -181,7 +182,7 @@ onSave(){
           horizontalPosition: "right"
         });
       });
-    
+
 }
  fireSnackBar(message: string, action, classType: string) {
     this.snackBar.open(message, action, {
