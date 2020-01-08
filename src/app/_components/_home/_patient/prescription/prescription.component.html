@@ -87,8 +87,8 @@
         <mat-label>Visit Type </mat-label>
 
       <mat-select   formControlName="visitType"   [(ngModel)]="dataItem.visitType">
-        <mat-option *ngFor="let type of visitTypes" [value]="type.value">
-          {{type.name}}
+        <mat-option *ngFor="let type of visitTypes" [value]="type">
+          {{type}}
         </mat-option>
       </mat-select>
      <mat-error *ngIf="hasError('visitType', 'required')">Visit Type  Is Required</mat-error>

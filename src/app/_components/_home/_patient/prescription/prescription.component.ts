@@ -1,5 +1,5 @@
 import { Component, OnInit ,ViewChild} from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute,Router} from '@angular/router';
 import { RepositoryService } from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -31,17 +31,17 @@ prescriptionInstructions:any[];
       diagonsis:"",
       visitDate:"",
       nextVisitDate:"",
-      visitType:0,
+      visitType:"",
       patientId:"",
       prescriptionMedicines:[],
       prescriptionInstructions:[],
     };
 
-visitTypes:any[]=[{value:0,name:"medicalExamination"}, {value:1,name:"medicalConsultation"} ,{value:2,name:"folllowup"}];
+visitTypes:any[]=["medicalExamination", "medicalConsultation" , "folllowup"];
   dataSource = new MatTableDataSource<any>();
   dataSourceInstruction = new MatTableDataSource<any>();
   constructor( private route:ActivatedRoute,private repository: RepositoryService,private formBuilder: FormBuilder,
-  private snackBar: MatSnackBar, private dialog: MatDialog)
+  private snackBar: MatSnackBar,private router:Router, private dialog: MatDialog)
   {
     this.prescriptionMedicines=[];
     this.prescriptionInstructions=[];
@@ -173,11 +173,12 @@ onSave(){
             panelClass: ['green-snackbar'],
             horizontalPosition: "right"
         });
+this.router.navigate(['/home/patientprofile',parseInt(this.route.snapshot.paramMap.get('id'))]);
 
       },
       (err: any) => {
         this.snackBar.open(err.error, '', {
-          duration: 1000,
+          duration: 100000,
           panelClass: ['red-snackbar'],
           horizontalPosition: "right"
         });

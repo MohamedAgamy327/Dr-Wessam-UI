@@ -41,7 +41,7 @@ export class PrescriptionAddMedicineDialogComponent implements OnInit {
       duration:['',Validators.required],
       noteAr:[""],
       noteEng:[""],
- 
+
   });
    }
 
@@ -87,17 +87,15 @@ export class PrescriptionAddMedicineDialogComponent implements OnInit {
   }
 chooseMedicineChange(){
       let choosed=this.addMedcineForm.controls.medicine.value;
+      console.log(choosed);
       if (choosed) {
-         
           this.dataItem.medicineId=choosed.id;
           this.dataItem.name=choosed.name;
           this.dataItem.medicineTypeId=choosed.medicineTypeId;
           this.dataItem.medicineType=choosed.medicineType;
-          this.dataItem.frequency=choosed.frequency;
+          this.dataItem.frequency=choosed.arabicFrequency;
           this.dataItem.frequencyId=choosed.frequencyId;
           this.dataItem.duration=choosed.duration;
-
-   
 }
 
 }
@@ -116,6 +114,6 @@ chooseMedicineChange(){
   }
 
 
- 
+
 
 }

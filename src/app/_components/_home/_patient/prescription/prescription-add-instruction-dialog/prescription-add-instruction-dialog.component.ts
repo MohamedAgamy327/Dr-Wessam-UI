@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Component, Inject,OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RepositoryService } from 'src/app/_services';
@@ -19,6 +20,7 @@ dataItem:any={}
 
   ngOnInit() {
     this.getInstructions();
+       this.instructions=[];
 
     this.addInstructionForm=this.formBuilder.group({
    instruction:["",Validators.required]
@@ -29,7 +31,14 @@ dataItem:any={}
     getInstructions() {
     this.repository.get('instructions').subscribe(
       (res: any) => {
-        this.instructions = res;
+        res.forEach(element => {
+        this.instructions.push({
+instructionId :element.id,
+englishName:element.englishName,
+arabicName:element.arabicName
+        })
+        });
+
       },
       (err: any) => {
         this.snackBar.open(err.error, '', {
