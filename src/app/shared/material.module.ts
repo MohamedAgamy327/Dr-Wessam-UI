@@ -12,6 +12,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import {
   MatTableModule, MatBottomSheetModule, MatSnackBarModule,
   MatNativeDateModule, MatCheckboxModule, MatMenuModule,
@@ -41,7 +42,7 @@ import { MatGridListResponsive } from './mat-grid-list-responsive.directive';
     MatTabsModule, MatTooltipModule, MatFormFieldModule,
     MatAutocompleteModule, MatTreeModule, FlexLayoutModule,
     MatBadgeModule, FlexLayoutModule, NgxMaterialTimepickerModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,DragDropModule
   ],
   exports: [
     MatInputModule, MatButtonModule, MatSidenavModule,
@@ -57,7 +58,7 @@ import { MatGridListResponsive } from './mat-grid-list-responsive.directive';
     MatTabsModule, MatTooltipModule, MatFormFieldModule,
     MatAutocompleteModule, MatTreeModule, FlexLayoutModule,
     MatBadgeModule, CdkTreeModule, NgxMaterialTimepickerModule,
-    NgxMatSelectSearchModule, MatGridListResponsive
+    NgxMatSelectSearchModule, MatGridListResponsive,DragDropModule
   ]
 })
 

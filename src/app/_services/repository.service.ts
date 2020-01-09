@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/HTTP';
 import { environment } from '../../environments/environment';
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,15 @@ export class RepositoryService {
   data: any;
 
   constructor(private http: HttpClient) { }
-
+  uploadFile(data: any, apiController: string,action:string): Observable<any> {
+    return this.http.post<any>(environment.serverUrl + apiController + "/" + action , data);
+  }
   get(url: string, params?: any) {
     const requestUrl = this.generateUrl(
       `${environment.serverUrl + url}`,
       params
     );
-    
+
     return this.http.get(requestUrl);
   }
    getById(url: string, params?: any) {
@@ -25,7 +28,7 @@ export class RepositoryService {
       `${environment.serverUrl + url}`,
       params
     );
-    
+
     return this.http.get(requestUrl+"/"+params);
   }
 

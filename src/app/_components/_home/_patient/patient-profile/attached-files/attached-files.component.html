@@ -1,1 +1,67 @@
-<p>attached-files works!</p>
+<!--
+<div class="example-container">
+
+
+
+
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="filesNameList"
+    [cdkDropListConnectedTo]="[filesNameList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of filesNameList" cdkDrag>{{item}}</div>
+  </div>
+</div> -->
+<h2>Patient Files</h2>
+<table mat-table [dataSource]="dataSource" matSort>
+
+  <ng-container matColumnDef="seriel">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Seriael number </th>
+    <td mat-cell *matCellDef="let element  ; let i=index"> {{i+1}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> File name </th>
+    <td mat-cell *matCellDef="let element"> {{element}} </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+
+
+        <span mat-icon-button >
+          <mat-icon color="warn" [style.color]="'#bd0000'">
+            delete
+          </mat-icon>
+        </span>
+        <span mat-icon-button>
+          <mat-icon  [style.background-color]="black">
+            <mat-icon aria-label="Show">remove_red_eye</mat-icon>
+          </mat-icon>
+        </span>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+<div fxLayout fxLayoutAlign="center">
+
+
+
+
+  <input (change)="openFile($event.target.files)" hidden  #fileId type="file" placeholder="Choose File"
+  accept="exel,pdf,png" />
+</div>
+<br>
+<div fxLayout fxLayoutAlign="center">
+  <button fxFlexOffset="" (click)="uploadAllFiles()" mat-flat-button color="warn">Save</button>
+  <button class="add-input" fxFlexOffset="20" mat-fab (click)="fileId.click();" color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
