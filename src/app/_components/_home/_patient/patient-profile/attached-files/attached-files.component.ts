@@ -11,7 +11,7 @@ import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar } from '@angular
 })
 export class AttachedFilesComponent implements OnInit {
 patientFiles:any[];
-filesNameList:string[];
+
 
 @Input() patientId:any;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -21,7 +21,10 @@ filesNameList:string[];
 patientAttachFileId:number;
 
   constructor(private repository: RepositoryService,private snackBar: MatSnackBar)
-{this.patientFiles=[];this.filesNameList=[]; }
+{
+  this.patientFiles=[];
+
+ }
 
 
   ngOnInit() {
@@ -33,9 +36,10 @@ patientAttachFileId:number;
   getPtientFiles(id:any){
     this.repository.getById("PatientFiles",id).subscribe((res:any[])=>
     {
-    console.log(res);
+
 
       this.patientFiles=res;
+      this.refeshData();
     });
   }
 
@@ -47,7 +51,7 @@ patientAttachFileId:number;
 
 
 this.patientFiles.push({patientId:this.patientId,patientFilePath:f.name});
-    this.filesNameList.push(f.name);
+
     this.refeshData();
       // this.fireSnackBar("files  Uploaded success", "X", "green-snackbar");
         });
@@ -63,7 +67,7 @@ uploadAllFiles(){
 }
 
  refeshData() {
-    this.dataSource = new MatTableDataSource(this.filesNameList);
+    this.dataSource = new MatTableDataSource(this.patientFiles);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
