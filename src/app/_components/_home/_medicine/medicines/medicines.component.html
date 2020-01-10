@@ -1,11 +1,10 @@
 <div class="container">
-  <div class="example-button-row">
-    <mat-form-field class="filter-input">
-      <input autocomplete="off" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  <div fxLayout>
+    <mat-form-field fxFlex="80" fxFlexOffset="1">
+      <input autocomplete="off" matInput (keyup)="applyFilter($event.target.value)" placeholder="search">
     </mat-form-field>
-    <button class="add-input" mat-fab (click)="add()" color="primary">
-      <mat-icon>add</mat-icon>
-    </button>
+
+
   </div>
 
   <table mat-table [dataSource]="dataSource" matSort>
@@ -59,4 +58,12 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <br>
+  <div fxLayout fxLayoutAlign="center">
+
+
+    <button class="add-input" mat-fab (click)="add()" color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>

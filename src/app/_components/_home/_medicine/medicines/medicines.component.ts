@@ -76,6 +76,8 @@ export class MedicinesComponent implements OnInit {
 
   add() {
     const dialogRef = this.dialog.open(MedicineAddDialogComponent, {
+         width: "30%",
+      height: "auto",
       data: { frequencys: this.frequencys, medicineTypes: this.medicineTypes }
     });
 
@@ -89,6 +91,8 @@ export class MedicinesComponent implements OnInit {
 
   edit(medicine) {
     const dialogRef = this.dialog.open(MedicineEditDialogComponent, {
+         width: "30%",
+      height: "auto",
       data: { medicine, frequencys: this.frequencys, medicineTypes: this.medicineTypes }
     });
 
@@ -103,6 +107,8 @@ export class MedicinesComponent implements OnInit {
 
   delete(medicine) {
     const dialogRef = this.dialog.open(MedicineDeleteDialogComponent, {
+         width: "30%",
+      height: "auto",
       data: medicine
     });
 

@@ -19,7 +19,7 @@ export class InstructionsComponent implements OnInit {
   displayedColumns: string[] = ['englishName', 'arabicName', 'edit', 'delete'];
   instructions: Instruction[];
   dataSource = new MatTableDataSource<Instruction>();
-  
+
 
   constructor(private repository: RepositoryService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
@@ -47,6 +47,8 @@ export class InstructionsComponent implements OnInit {
 
   add() {
     const dialogRef = this.dialog.open(InstructionAddDialogComponent, {
+         width: "30%",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -59,7 +61,9 @@ export class InstructionsComponent implements OnInit {
 
   edit(instruction) {
     const dialogRef = this.dialog.open(InstructionEditDialogComponent, {
-      data: instruction
+      data: instruction,
+         width: "30%",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -73,7 +77,9 @@ export class InstructionsComponent implements OnInit {
 
   delete(instruction) {
     const dialogRef = this.dialog.open(InstructionDeleteDialogComponent, {
-      data: instruction
+      data: instruction,
+         width: "30%",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe(result => {

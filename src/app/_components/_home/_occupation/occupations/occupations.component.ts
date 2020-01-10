@@ -46,6 +46,9 @@ export class OccupationsComponent implements OnInit {
 
   add() {
     const dialogRef = this.dialog.open(OccupationAddDialogComponent, {
+
+         width: "30%",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -58,7 +61,10 @@ export class OccupationsComponent implements OnInit {
 
   edit(occupation) {
     const dialogRef = this.dialog.open(OccupationEditDialogComponent, {
-      data: occupation
+      data: occupation,
+               width: "30%",
+      height: "auto",
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -72,7 +78,9 @@ export class OccupationsComponent implements OnInit {
 
   delete(occupation) {
     const dialogRef = this.dialog.open(OccupationDeleteDialogComponent, {
-      data: occupation
+      data: occupation,
+                 width: "30%",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe(result => {

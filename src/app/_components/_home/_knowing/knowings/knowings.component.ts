@@ -46,6 +46,8 @@ export class KnowingsComponent implements OnInit {
 
   add() {
     const dialogRef = this.dialog.open(KnowingAddDialogComponent, {
+         width: "30%",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -58,6 +60,8 @@ export class KnowingsComponent implements OnInit {
 
   edit(knowing) {
     const dialogRef = this.dialog.open(KnowingEditDialogComponent, {
+         width: "30%",
+      height: "auto",
       data: knowing
     });
 
@@ -72,6 +76,8 @@ export class KnowingsComponent implements OnInit {
 
   delete(knowing) {
     const dialogRef = this.dialog.open(KnowingDeleteDialogComponent, {
+         width: "30%",
+      height: "auto",
       data: knowing
     });
 

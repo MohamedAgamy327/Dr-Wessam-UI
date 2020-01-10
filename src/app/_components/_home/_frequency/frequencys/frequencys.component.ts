@@ -46,6 +46,8 @@ export class FrequencysComponent implements OnInit {
 
   add() {
     const dialogRef = this.dialog.open(FrequencyAddDialogComponent, {
+         width: "30%",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -58,7 +60,9 @@ export class FrequencysComponent implements OnInit {
 
   edit(frequency) {
     const dialogRef = this.dialog.open(FrequencyEditDialogComponent, {
-      data: frequency
+      data: frequency,
+         width: "30%",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -72,7 +76,9 @@ export class FrequencysComponent implements OnInit {
 
   delete(frequency) {
     const dialogRef = this.dialog.open(FrequencyDeleteDialogComponent, {
-      data: frequency
+      data: frequency,
+         width: "30%",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe(result => {
