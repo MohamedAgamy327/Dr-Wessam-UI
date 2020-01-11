@@ -81,6 +81,8 @@ this.router.navigate(['/home/patientprofile',patient.id]);
 
   add() {
     const dialogRef = this.dialog.open(PatientAddDialogComponent, {
+         width: "30%",
+      height: "auto",
       data: { occupations: this.occupations, knowings: this.knowings }
     });
 
@@ -94,6 +96,8 @@ this.router.navigate(['/home/patientprofile',patient.id]);
 
   edit(patient) {
     const dialogRef = this.dialog.open(PatientEditDialogComponent, {
+         width: "30%",
+      height: "auto",
       data: { patient, knowings: this.knowings, occupations: this.occupations }
     });
 
@@ -108,6 +112,8 @@ this.router.navigate(['/home/patientprofile',patient.id]);
 
   delete(patient) {
     const dialogRef = this.dialog.open(PatientDeleteDialogComponent, {
+         width: "30%",
+      height: "auto",
       data: patient
     });
 
@@ -122,6 +128,8 @@ this.router.navigate(['/home/patientprofile',patient.id]);
 
   show(patient) {
     this.dialog.open(PatientShowDialogComponent, {
+         width: "30%",
+      height: "auto",
       data: patient
     });
   }

@@ -1,3 +1,5 @@
+import { PrescriptionAddComponent } from './_patient/patient-profile/view-all-prescriptions/prescription-add/prescription-add.component';
+import { PrescriptionEditComponent } from './_patient/patient-profile/view-all-prescriptions/prescription-edit/prescription-edit.component';
 import { PatientProfileComponent } from './_patient/patient-profile/patient-profile.component';
 import { PrescriptionComponent } from './_patient/prescription/prescription.component';
 import { PregnancySequenceComponent } from './_patient/patient-profile/pregnancy-sequence/pregnancy-sequence.component';
@@ -39,7 +41,8 @@ const routes: Routes = [
       {
         path: 'patients', component: PatientsComponent
       },
-        { path: 'addprescription/:id', component: PrescriptionComponent},
+        { path: 'addprescription/:id', component: PrescriptionAddComponent},
+        { path: 'editprescription/:id', component: PrescriptionEditComponent},
 
         { path: 'patientprofile/:id', component: PatientProfileComponent,
             children:[

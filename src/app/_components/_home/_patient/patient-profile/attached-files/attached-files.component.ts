@@ -61,7 +61,7 @@ this.patientFiles.push({patientId:this.patientId,patientFilePath:f.name});
 
 uploadAllFiles(){
   console.log(this.patientFiles);
- this.repository.post("patients/Attachfiles",this.patientFiles).subscribe(res => {
+ this.repository.post("patients",this.patientFiles).subscribe(res => {
           this.fireSnackBar("files  Uploaded success", "X", "green-snackbar");
         });
 }

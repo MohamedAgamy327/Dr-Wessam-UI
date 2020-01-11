@@ -1,3 +1,4 @@
+import { PrescriptionDeleteDialogComponent } from './prescription-delete-dialog/prescription-delete-dialog.component';
 import { RepositoryService } from 'src/app/_services';
 import { Patient, Occupation, Knowing } from 'src/app/_models';
 
@@ -23,7 +24,7 @@ export class ViewAllPrescriptionsComponent implements OnInit {
   constructor(private route:ActivatedRoute,private repository: RepositoryService,private router:Router ,private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit() {
-    console.log(this.patientId);
+
    if (this.patientId!==undefined) {
      this.getPrescriptionsByPatientId(this.patientId);
    }
@@ -34,7 +35,7 @@ export class ViewAllPrescriptionsComponent implements OnInit {
     this.repository.getById('Prescriptions/patients',this.patientId).subscribe(
       (res: any) => {
         console.log(res);
-this.dataSource=res;
+      this.dataSource=res;
          this.prescriptions = res;
       },
       (err: any) => {
@@ -49,6 +50,30 @@ goToPrescriptionPage(){
 this.router.navigate(['home/addprescription',this.patientId])
 }
 
+goToEditPrescription(row){
+this.router.navigate(['home/editprescription',row.id])
+}
+delete(item) {
+  alert("kops")
+    const dialogRef = this.dialog.open(PrescriptionDeleteDialogComponent, {
+         width: "30%",
+      height: "auto",
+      data: item
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const index = this.prescriptions.findIndex(f => f.id === result.id);
+        this.prescriptions.splice(index, 1);
+        this.refeshData();
+      }
+    });
+  }
+
+    refeshData() {
+    this.dataSource = new MatTableDataSource(this.prescriptions);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
 }

@@ -1,5 +1,8 @@
-import { PrescriptionAddInstructionDialogComponent } from './../patient-profile/view-all-prescriptions/prescription-add-instruction-dialog/prescription-add-instruction-dialog.component';
-import { PrescriptionAddMedicineDialogComponent } from './../patient-profile/view-all-prescriptions/prescription-add-medicine-dialog/prescription-add-medicine-dialog.component';
+import { PrescriptionDeleteInstructionDialogComponent } from './../prescription-delete-instruction-dialog/prescription-delete-instruction-dialog.component';
+import { PrescriptionDeleteMedicineDialogComponent } from './../prescription-delete-medicine-dialog/prescription-delete-medicine-dialog.component';
+import { PrescriptionEditMedicineDialogComponent } from './../prescription-edit-medicine-dialog/prescription-edit-medicine-dialog.component';
+import { PrescriptionAddInstructionDialogComponent } from './../prescription-add-instruction-dialog/prescription-add-instruction-dialog.component';
+import { PrescriptionAddMedicineDialogComponent } from './../prescription-add-medicine-dialog/prescription-add-medicine-dialog.component';
 import { Component, OnInit ,ViewChild} from '@angular/core';
 import { ActivatedRoute,Router} from '@angular/router';
 import { RepositoryService } from 'src/app/_services';
@@ -10,11 +13,11 @@ import { Medicine, MedicineType, Frequency } from 'src/app/_models';
 import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDialog } from '@angular/material';
 import { Patient, Occupation, Knowing } from 'src/app/_models';
 @Component({
-  selector: 'app-prescription',
-  templateUrl: './prescription.component.html',
-  styleUrls: ['./prescription.component.css']
+  selector: 'app-prescription-add',
+  templateUrl: './prescription-add.component.html',
+  styleUrls: ['./prescription-add.component.css']
 })
-export class PrescriptionComponent implements OnInit {
+export class PrescriptionAddComponent implements OnInit {
 patientModel:any;
 addPrescriptionForm:FormGroup;
 prescriptionMedicines:any[];
@@ -100,6 +103,7 @@ visitTypes:any[]=["medicalExamination", "medicalConsultation" , "folllowup"];
   getMedicines() {
     this.repository.get('medicines').subscribe(
       (res: any) => {
+        console.log(res);
         this.medicines = res;
 
       },
@@ -134,13 +138,42 @@ addMedicine(){
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        console.log(result);
       this.prescriptionMedicines.push(result);
-      console.log( this.prescriptionMedicines);
-
       this.refeshMedicineTable();
       }
     });
 }
+
+editMedicine(medicine){
+   const dialogRef = this.dialog.open(PrescriptionEditMedicineDialogComponent, {
+        data: { medicine, frequencys: this.frequencys, medicineTypes: this.medicineTypes },
+
+         width: "50%",
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+      medicine=result;
+      this.refeshMedicineTable();
+      }
+    });
+}
+deleteMedicine(medicineItem){
+   const dialogRef = this.dialog.open(PrescriptionDeleteMedicineDialogComponent, {
+      data: medicineItem,
+         width: "50%",
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+               const index = this.prescriptionMedicines.findIndex(f => f.id === result.id);
+        this.prescriptionMedicines.splice(index, 1);
+      this.refeshMedicineTable();
+      }
+    });
+}
+
 
 addInstruction(){
    const dialogRef = this.dialog.open(PrescriptionAddInstructionDialogComponent, {
@@ -162,6 +195,21 @@ addInstruction(){
     });
 }
 
+deleteInstruction(medicineItem){
+   const dialogRef = this.dialog.open(PrescriptionDeleteInstructionDialogComponent ,{
+      data: medicineItem,
+         width: "50%",
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+
+       const index = this.prescriptionInstructions.findIndex(f => f.id === result.id);
+        this.prescriptionInstructions.splice(index, 1);
+        this.refeshInstructionTable();
+      }
+    });
+}
 onSave(){
 
   this.dataItem.prescriptionMedicines=this.prescriptionMedicines;
@@ -179,7 +227,7 @@ this.router.navigate(['/home/patientprofile',parseInt(this.route.snapshot.paramM
       },
       (err: any) => {
         this.snackBar.open(err.error, '', {
-          duration: 100000,
+          duration: 10000,
           panelClass: ['red-snackbar'],
           horizontalPosition: "right"
         });
